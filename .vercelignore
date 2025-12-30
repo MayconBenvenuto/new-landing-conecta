@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env files
+.env*.local
+.env.development
+.env.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation (não necessário no deploy)
+DOCUMENTATION.md
+COMPONENTS_GUIDE.md
+ANIMATIONS_PLAN.md
+FUNIL_VENDAS.md
+KOMMO_INTEGRATION.md
+QUICK_START_KOMMO.md
+
+# Scripts de desenvolvimento
+scripts/
