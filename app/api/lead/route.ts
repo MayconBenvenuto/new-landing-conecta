@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { calculateLeadScore } from "@/lib/lead-scoring"
 import { validateLeadForm } from "@/lib/validations"
+import { sendLeadToKommo } from "@/lib/kommo"
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,8 +65,31 @@ export async function POST(request: NextRequest) {
       perfil: leadScore.perfil,
     })
 
-    // TODO: Integration hooks for CRM
-    // await sendToKommo(crmPayload)
+    // Integração com Kommo (amoCRM)
+    const kommoResult = await sendLeadToKommo({
+      name: body.name,
+      company: body.company,
+      role: body.role,
+      email: body.email,
+      phone: body.phone,
+      employees: body.employees,
+      message: body.message || "",
+      leadScore: leadScore.leadScore,
+      perfil: leadScore.perfil,
+      flags: leadScore.flags,
+      source: "landing-page",
+      timestamp: crmPayload.timestamp,
+    })
+
+    if (!kommoResult.success) {
+      console.error("[Lead] Falha ao enviar para Kommo:", kommoResult.error)
+      // Não retorna erro para o usuário, apenas loga
+      // O lead ainda é considerado "registrado" mesmo se o Kommo falhar
+    } else {
+      console.log("[Lead] Enviado para Kommo com sucesso. ID:", kommoResult.leadId)
+    }
+
+    // TODO: Outras integrações CRM se necessário
     // await sendToRDStation(crmPayload)
     // await sendToHubSpot(crmPayload)
 
@@ -73,7 +97,7 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         message: "Lead registrado com sucesso",
-        leadId: `lead_${Date.now()}`,
+        leadId: kommoResult.leadId || `lead_${Date.now()}`,
       },
       { status: 200 },
     )

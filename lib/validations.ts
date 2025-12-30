@@ -69,9 +69,8 @@ export function validateLeadForm(data: {
 
   if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = "E-mail inválido"
-  } else if (!validateCorporateEmail(data.email)) {
-    errors.email = "Por favor, utilize um e-mail corporativo"
   }
+  // Aceita qualquer email válido - removida validação de email corporativo
 
   if (!validateWhatsApp(data.phone)) {
     errors.phone = "WhatsApp inválido"

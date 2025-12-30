@@ -1,7 +1,13 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Users, Scale, HardHat } from "lucide-react"
+import { useScrollReveal } from "@/hooks/use-animations"
 
 export function Hub360() {
+  const [ref, isVisible] = useScrollReveal()
+
   const pillars = [
     {
       icon: Users,
@@ -25,10 +31,16 @@ export function Hub360() {
   return (
     <section
       id="diferenciais"
+      ref={ref}
       className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-white to-background"
     >
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance text-secondary">
             Mais que uma plataforma. Um sistema de gestão integrada.
           </h2>
@@ -37,25 +49,41 @@ export function Hub360() {
             decisões. Isso permite enxergar riscos de forma ampla, agir preventivamente e sustentar a operação com
             segurança jurídica e humana.
           </p>
-        </div>
+        </motion.div>
 
         {/* Pillars */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {pillars.map((pillar, index) => (
-            <Card key={index} className="p-8 hover:shadow-xl transition-shadow border-border/50 bg-white">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <pillar.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-secondary">{pillar.title}</h3>
-              <p className="text-foreground/80 leading-relaxed">{pillar.description}</p>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+            >
+              <Card className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-border/50 bg-white group">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors"
+                >
+                  <pillar.icon className="w-7 h-7 text-primary" />
+                </motion.div>
+                <h3 className="text-xl font-bold mb-4 text-secondary">{pillar.title}</h3>
+                <p className="text-foreground/80 leading-relaxed">{pillar.description}</p>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
         {/* Circular Infographic */}
-        <div className="flex justify-center mt-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex justify-center mt-16"
+        >
           <CircularInfographic />
-        </div>
+        </motion.div>
       </div>
     </section>
   )

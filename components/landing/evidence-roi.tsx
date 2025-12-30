@@ -1,15 +1,27 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TrendingUp, TrendingDown, Activity } from "lucide-react"
 import { ContextualCTA } from "./contextual-cta"
+import { useScrollReveal } from "@/hooks/use-animations"
+import { AnimatedCounter } from "@/components/ui/animated-counter"
 
 export function EvidenceROI() {
+  const [ref, isVisible] = useScrollReveal()
+
   return (
-    <section id="prova" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="prova" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance text-secondary">
               Decisões baseadas em evidências, não em suposições.
             </h2>
@@ -28,12 +40,17 @@ export function EvidenceROI() {
                 no ROI do capital humano.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right - Dashboard Mock */}
-          <div className="space-y-4">
-            <DashboardMock />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <DashboardMock isVisible={isVisible} />
+          </motion.div>
         </div>
 
         <div className="mt-16">
@@ -49,66 +66,75 @@ export function EvidenceROI() {
   )
 }
 
-function DashboardMock() {
+function DashboardMock({ isVisible }: { isVisible: boolean }) {
+  const kpiData = [
+    { Icon: TrendingDown, label: "Absenteísmo", value: 24, suffix: "%", color: "green", prefix: "-" },
+    { Icon: TrendingUp, label: "Engajamento", value: 87, suffix: "%", color: "blue", prefix: "" },
+    { Icon: Activity, label: "Conformidade", value: 98, suffix: "%", color: "primary", prefix: "" },
+    { Icon: TrendingDown, label: "Passivos", value: 31, suffix: "%", color: "green", prefix: "-" },
+  ]
+
   return (
     <Card className="p-6 border-border/50 shadow-2xl bg-white">
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-between"
+        >
           <h3 className="text-lg font-bold text-secondary">Dashboard de Riscos</h3>
-          
-        </div>
+        </motion.div>
 
         {/* KPI Cards */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-background rounded-xl p-4 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingDown className="w-4 h-4 text-green-600" />
-              <span className="text-xs text-muted-foreground">Absenteísmo</span>
-            </div>
-            <div className="text-2xl font-bold text-secondary">-24%</div>
-            <div className="text-xs text-green-600">vs. trimestre anterior</div>
-          </div>
-
-          <div className="bg-background rounded-xl p-4 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
-              <span className="text-xs text-muted-foreground">Engajamento</span>
-            </div>
-            <div className="text-2xl font-bold text-secondary">87%</div>
-            <div className="text-xs text-blue-600">acima da meta</div>
-          </div>
-
-          <div className="bg-background rounded-xl p-4 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <Activity className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Conformidade</span>
-            </div>
-            <div className="text-2xl font-bold text-secondary">98%</div>
-            <div className="text-xs text-primary">NR-1 atendida</div>
-          </div>
-
-          <div className="bg-background rounded-xl p-4 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingDown className="w-4 h-4 text-green-600" />
-              <span className="text-xs text-muted-foreground">Passivos</span>
-            </div>
-            <div className="text-2xl font-bold text-secondary">-31%</div>
-            <div className="text-xs text-green-600">redução anual</div>
-          </div>
+          {kpiData.map((kpi, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1, type: "spring", stiffness: 200 }}
+              className="bg-background rounded-xl p-4 border border-border/50 hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <kpi.Icon
+                  className={`w-4 h-4 ${kpi.color === "green" ? "text-green-600" : kpi.color === "blue" ? "text-blue-600" : "text-primary"}`}
+                />
+                <span className="text-xs text-muted-foreground">{kpi.label}</span>
+              </div>
+              <div className="text-2xl font-bold text-secondary">
+                <AnimatedCounter end={kpi.value} prefix={kpi.prefix} suffix={kpi.suffix} />
+              </div>
+              <div
+                className={`text-xs ${kpi.color === "green" ? "text-green-600" : kpi.color === "blue" ? "text-blue-600" : "text-primary"}`}
+              >
+                {kpi.color === "blue" ? "acima da meta" : index === 2 ? "NR-1 atendida" : index === 0 ? "vs. trimestre anterior" : "redução anual"}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Fake Chart */}
-        <div className="bg-background rounded-xl p-4 border border-border/50">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="bg-background rounded-xl p-4 border border-border/50"
+        >
           <div className="text-xs text-muted-foreground mb-3">Evolução de Riscos Psicossociais</div>
           <svg viewBox="0 0 300 100" className="w-full" aria-label="Gráfico de evolução de riscos">
-            <polyline
+            <motion.polyline
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isVisible ? { pathLength: 1, opacity: 1 } : {}}
+              transition={{ duration: 2, delay: 0.7, ease: "easeInOut" }}
               points="0,80 50,70 100,65 150,50 200,45 250,35 300,30"
               fill="none"
               stroke="rgb(2, 29, 121)"
               strokeWidth="2"
+              strokeLinecap="round"
             />
-            <polyline points="0,80 50,70 100,65 150,50 200,45 250,35 300,30" fill="url(#gradient)" opacity="0.2" />
+            <polyline points="0,80 50,70 100,65 150,50 200,45 250,35 300,30 300,100 0,100" fill="url(#gradient)" opacity="0.2" />
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="rgb(2, 29, 121)" />
@@ -116,7 +142,7 @@ function DashboardMock() {
               </linearGradient>
             </defs>
           </svg>
-        </div>
+        </motion.div>
       </div>
     </Card>
   )

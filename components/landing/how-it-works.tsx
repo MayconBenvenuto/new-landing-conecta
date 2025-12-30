@@ -1,5 +1,9 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { ClipboardCheck, Search, GitBranch, FileCheck } from "lucide-react"
+import { useScrollReveal } from "@/hooks/use-animations"
 
 const STEPS = [
   {
@@ -29,10 +33,17 @@ const STEPS = [
 ]
 
 export function HowItWorks() {
+  const [ref, isVisible] = useScrollReveal()
+
   return (
-    <section id="como-funciona" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="como-funciona" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">Metodologia</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance text-secondary">
             Como funciona o diagnóstico
@@ -41,35 +52,56 @@ export function HowItWorks() {
             Um processo estruturado para identificar, analisar e priorizar riscos com base em evidências e dados reais
             da sua operação.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {STEPS.map((step, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-6 bg-background border-border/50 hover:shadow-lg transition-shadow relative group"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: 0.2 + index * 0.15,
+                type: "spring",
+                stiffness: 100,
+              }}
             >
-              {/* Step number */}
-              <span className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center shadow-lg">
-                {step.step}
-              </span>
+              <Card className="p-6 bg-background border-border/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative group h-full">
+                {/* Step number */}
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={isVisible ? { scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.15, type: "spring", stiffness: 200 }}
+                  className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center shadow-lg"
+                >
+                  {step.step}
+                </motion.span>
 
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <step.icon className="w-6 h-6 text-primary" />
-              </div>
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors"
+                >
+                  <step.icon className="w-6 h-6 text-primary" />
+                </motion.div>
 
-              <h3 className="text-lg font-bold mb-3 text-secondary">{step.title}</h3>
-              <p className="text-sm text-foreground/70 leading-relaxed">{step.description}</p>
+                <h3 className="text-lg font-bold mb-3 text-secondary">{step.title}</h3>
+                <p className="text-sm text-foreground/70 leading-relaxed">{step.description}</p>
 
-              {/* Connector line for desktop */}
-              {index < STEPS.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-border" />
-              )}
-            </Card>
+                {/* Connector line for desktop */}
+                {index < STEPS.length - 1 && (
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={isVisible ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.15 }}
+                    className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-primary/30 origin-left"
+                  />
+                )}
+              </Card>
+            </motion.div>
           ))}
         </div>
-
-        
       </div>
     </section>
   )

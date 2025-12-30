@@ -1,7 +1,9 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { useScrollReveal } from "@/hooks/use-animations"
 
 const FAQS = [
   {
@@ -48,6 +50,7 @@ const FAQS = [
 
 export function FAQ() {
   const { trackEvent } = useAnalytics()
+  const [ref, isVisible] = useScrollReveal()
 
   const handleAccordionChange = (value: string) => {
     if (value) {
@@ -56,27 +59,38 @@ export function FAQ() {
   }
 
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
+    <section ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance text-secondary">
             Perguntas Frequentes
           </h2>
           <p className="text-lg text-foreground/90">Entenda melhor como funciona o Conecta Saúde</p>
-        </div>
+        </motion.div>
 
         <Accordion type="single" collapsible className="w-full space-y-4" onValueChange={handleAccordionChange}>
           {FAQS.map((faq, index) => (
-            <AccordionItem
+            <motion.div
               key={index}
-              value={`item-${index}`}
-              className="bg-white border border-border/50 rounded-xl px-6 data-[state=open]:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
             >
-              <AccordionTrigger className="text-left hover:no-underline py-6">
-                <span className="font-semibold text-secondary pr-4">{faq.question}</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground/80 leading-relaxed pb-6">{faq.answer}</AccordionContent>
-            </AccordionItem>
+              <AccordionItem
+                value={`item-${index}`}
+                className="bg-white border border-border/50 rounded-xl px-6 data-[state=open]:shadow-lg data-[state=open]:border-primary/30 transition-all duration-300"
+              >
+                <AccordionTrigger className="text-left hover:no-underline py-6">
+                  <span className="font-semibold text-secondary pr-4">{faq.question}</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/80 leading-relaxed pb-6">{faq.answer}</AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
       </div>

@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Users, Scale, HardHat, BarChart3, HeartPulse, Shield } from "lucide-react"
 import { useAnalytics } from "@/hooks/use-analytics"
@@ -77,23 +78,48 @@ export function HeroHub({ version = "default" }: { version?: string }) {
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-6 md:space-y-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance text-secondary">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6 md:space-y-8"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance text-secondary"
+            >
               {landingContent.headline}
-            </h1>
-            <p className="text-lg md:text-xl leading-relaxed text-foreground/90">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg md:text-xl leading-relaxed text-foreground/90"
+            >
               Um HUB de Gestão de Riscos estruturado para integrar Recursos Humanos, Jurídico e Saúde e Segurança do
               Trabalho em uma única inteligência de dados, orientado para conformidade com a NR-1 e capaz de preservar a
               integridade das pessoas.
-            </p>
-            <p className="text-base text-muted-foreground leading-relaxed">
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-base text-muted-foreground leading-relaxed"
+            >
               Decisões baseadas em evidências, estruturadas para prevenir riscos psicossociais, reduzir passivos e
               sustentar a performance do negócio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-base font-medium">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-base font-medium group">
                 <a href="#diagnostico" onClick={handleCTAClick(landingContent.cta)}>
-                  {landingContent.cta}
+                  <span className="group-hover:scale-105 inline-block transition-transform">{landingContent.cta}</span>
                 </a>
               </Button>
               <Button
@@ -106,42 +132,84 @@ export function HeroHub({ version = "default" }: { version?: string }) {
                   Entenda como funciona
                 </a>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Visual - Interactive HUB Illustration */}
-          <div className="relative flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative flex items-center justify-center"
+          >
             <div className="relative w-full max-w-lg aspect-square">
               {/* Central Hub */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-2xl flex items-center justify-center animate-pulse-subtle">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.5, type: "spring", stiffness: 200 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-2xl flex items-center justify-center"
+                >
                   <div className="w-24 h-24 rounded-xl bg-white flex items-center justify-center">
                     <span className="text-3xl font-bold text-secondary">CS</span>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Connection Lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" aria-hidden="true">
+              <motion.svg
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 400 400"
+                aria-hidden="true"
+              >
                 <defs>
                   <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="rgb(2, 29, 121)" stopOpacity="0.2" />
                     <stop offset="100%" stopColor="rgb(2, 29, 121)" stopOpacity="0.8" />
                   </linearGradient>
                 </defs>
-                <line x1="200" y1="200" x2="200" y2="60" stroke="url(#lineGradient)" strokeWidth="2" />
-                <line x1="200" y1="200" x2="340" y2="130" stroke="url(#lineGradient)" strokeWidth="2" />
-                <line x1="200" y1="200" x2="340" y2="270" stroke="url(#lineGradient)" strokeWidth="2" />
-                <line x1="200" y1="200" x2="200" y2="340" stroke="url(#lineGradient)" strokeWidth="2" />
-                <line x1="200" y1="200" x2="60" y2="270" stroke="url(#lineGradient)" strokeWidth="2" />
-                <line x1="200" y1="200" x2="60" y2="130" stroke="url(#lineGradient)" strokeWidth="2" />
-              </svg>
+                {[
+                  { x1: 200, y1: 200, x2: 200, y2: 60 },
+                  { x1: 200, y1: 200, x2: 340, y2: 130 },
+                  { x1: 200, y1: 200, x2: 340, y2: 270 },
+                  { x1: 200, y1: 200, x2: 200, y2: 340 },
+                  { x1: 200, y1: 200, x2: 60, y2: 270 },
+                  { x1: 200, y1: 200, x2: 60, y2: 130 },
+                ].map((line, index) => (
+                  <motion.line
+                    key={index}
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.9 + index * 0.1 }}
+                    x1={line.x1}
+                    y1={line.y1}
+                    x2={line.x2}
+                    y2={line.y2}
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                  />
+                ))}
+              </motion.svg>
 
-              {HUB_NODES.map((node) => (
-                <HubNode key={node.label} {...node} />
+              {HUB_NODES.map((node, index) => (
+                <HubNode key={node.label} {...node} index={index} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -153,11 +221,13 @@ function HubNode({
   label,
   position,
   description,
+  index,
 }: {
   icon: any
   label: string
   position: string
   description: string
+  index: number
 }) {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -180,29 +250,55 @@ function HubNode({
   }
 
   return (
-    <div
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 1 + index * 0.15,
+        type: "spring",
+        stiffness: 200,
+      }}
       className={`absolute ${positions[position]} group`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
     >
-      <div className="flex flex-col items-center gap-2 animate-float">
-        <button
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+        }}
+        transition={{
+          duration: 4 + index * 0.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="flex flex-col items-center gap-2"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
           className={`w-16 h-16 rounded-xl bg-white shadow-lg border border-border flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-            isHovered ? "scale-110 shadow-xl border-primary" : ""
+            isHovered ? "shadow-xl border-primary" : ""
           }`}
           aria-label={`${label}: ${description}`}
           tabIndex={0}
         >
           <Icon className={`w-7 h-7 transition-colors ${isHovered ? "text-primary" : "text-primary/80"}`} />
-        </button>
+        </motion.button>
         <span className="text-xs font-semibold text-secondary whitespace-nowrap">{label}</span>
-      </div>
+      </motion.div>
 
-      <div
-        className={`absolute ${tooltipPositions[position]} z-20 w-48 p-3 bg-secondary text-white text-xs rounded-lg shadow-xl transition-all duration-200 ${
-          isHovered ? "opacity-100 visible" : "opacity-0 invisible"
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{
+          opacity: isHovered ? 1 : 0,
+          y: isHovered ? 0 : -10,
+        }}
+        transition={{ duration: 0.2 }}
+        className={`absolute ${tooltipPositions[position]} z-20 w-48 p-3 bg-secondary text-white text-xs rounded-lg shadow-xl ${
+          isHovered ? "visible" : "invisible"
         }`}
         role="tooltip"
       >
@@ -213,7 +309,7 @@ function HubNode({
             position.includes("bottom") ? "bottom-[-4px]" : "top-[-4px]"
           } ${position.includes("left") ? "left-4" : position.includes("right") ? "right-4" : "left-1/2 -translate-x-1/2"}`}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
