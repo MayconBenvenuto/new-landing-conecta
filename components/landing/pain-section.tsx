@@ -9,7 +9,7 @@ export function PainSection() {
   ]
 
   return (
-    <section id="como-funciona" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="como-funciona" className="py-20 md:py-32 px-4 md:px-6 lg:px-8" style={{ backgroundColor: '#011147' }}>
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Image */}
@@ -25,10 +25,10 @@ export function PainSection() {
 
           {/* Right - Content */}
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance text-secondary">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance text-white">
               O valor do que não se vê: quando prevenir é o maior resultado
             </h2>
-            <div className="space-y-4 text-foreground/90 leading-relaxed">
+            <div className="space-y-4 text-white/90 leading-relaxed">
               <p>
                 A alma do Conecta Saúde não é apenas a gestão de riscos, mas também a preservação do futuro das pessoas.
                 No nosso Programa, gestão de riscos não se resume a cumprir exigências legais. Ela começa antes, na
@@ -40,15 +40,15 @@ export function PainSection() {
             <ul className="space-y-3">
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1 rounded-full bg-primary/10 p-1 flex-shrink-0">
-                    <Check className="w-4 h-4 text-primary" />
+                  <div className="mt-1 rounded-full bg-white/10 p-1 flex-shrink-0">
+                    <Check className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-foreground/90">{benefit}</span>
+                  <span className="text-white/90">{benefit}</span>
                 </li>
               ))}
             </ul>
 
-            <p className="text-foreground/90 leading-relaxed pt-4 font-medium">
+            <p className="text-white/90 leading-relaxed pt-4 font-medium">
               Chamamos isso de a invisibilidade do cuidado: uma estrutura sólida que sustenta pessoas e negócios sob
               alta pressão, sem interromper a performance.
             </p>

@@ -11,7 +11,7 @@ export function NR1Section() {
   ]
 
   return (
-    <section id="nr1" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-background to-white">
+    <section id="nr1" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-16">
           <AuthorityBadges />
@@ -74,6 +74,7 @@ export function NR1Section() {
             headline="Sua empresa está preparada para a NR-1?"
             description="Realize um diagnóstico prévio gratuito e identifique gaps de conformidade antes que se tornem problemas."
             buttonText="Agendar Diagnóstico NR-1"
+            urgency="Apenas 5 diagnósticos gratuitos por mês"
             location="nr1-section"
           />
         </div>

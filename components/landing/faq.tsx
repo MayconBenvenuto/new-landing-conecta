@@ -59,7 +59,7 @@ export function FAQ() {
   }
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
+    <section ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8" style={{ backgroundColor: '#011147' }}>
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -67,10 +67,10 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance text-secondary">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance text-white">
             Perguntas Frequentes
           </h2>
-          <p className="text-lg text-foreground/90">Entenda melhor como funciona o Conecta Saúde</p>
+          <p className="text-lg text-white/90">Entenda melhor como funciona o Conecta Saúde</p>
         </motion.div>
 
         <Accordion type="single" collapsible className="w-full space-y-4" onValueChange={handleAccordionChange}>

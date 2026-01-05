@@ -1,4 +1,4 @@
-import { Shield, FileCheck, Brain } from "lucide-react"
+import { Shield, FileCheck, Brain, Lock, Award, CheckCircle2 } from "lucide-react"
 
 const BADGES = [
   {
@@ -15,6 +15,21 @@ const BADGES = [
     icon: Brain,
     label: "Riscos Psicossociais",
     description: "Gestão especializada",
+  },
+  {
+    icon: Lock,
+    label: "LGPD Compliant",
+    description: "Dados protegidos",
+  },
+  {
+    icon: Award,
+    label: "ISO 9001",
+    description: "Gestão de qualidade",
+  },
+  {
+    icon: CheckCircle2,
+    label: "SSL/TLS",
+    description: "Conexão segura",
   },
 ]
 

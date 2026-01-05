@@ -32,7 +32,7 @@ export function Hub360() {
     <section
       id="diferenciais"
       ref={ref}
-      className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-white to-background"
+      className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div
@@ -60,7 +60,7 @@ export function Hub360() {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
             >
-              <Card className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-border/50 bg-white group">
+              <Card className="p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-white/20 bg-white group">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -124,7 +124,7 @@ function CircularInfographic() {
                 y1={centerY}
                 x2={x}
                 y2={y}
-                stroke="rgb(2, 29, 121)"
+                stroke="rgb(255, 255, 255)"
                 strokeWidth="2"
                 strokeOpacity="0.3"
               />

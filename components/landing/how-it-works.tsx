@@ -36,7 +36,7 @@ export function HowItWorks() {
   const [ref, isVisible] = useScrollReveal()
 
   return (
-    <section id="como-funciona" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="como-funciona" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8" style={{ backgroundColor: '#011147' }}>
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,14 +44,36 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">Metodologia</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance text-secondary">
+          <span className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-4 block">Metodologia</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance text-white">
             Como funciona o diagnóstico
           </h2>
-          <p className="text-lg text-foreground/80 leading-relaxed">
+          <p className="text-lg text-white/80 leading-relaxed">
             Um processo estruturado para identificar, analisar e priorizar riscos com base em evidências e dados reais
             da sua operação.
           </p>
+
+          {/* Process Info */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-white" />
+              <span className="text-white/80">
+                <strong className="text-white">7 dias</strong> para diagnóstico completo
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-white" />
+              <span className="text-white/80">
+                <strong className="text-white">100% remoto</strong> ou presencial
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-white" />
+              <span className="text-white/80">
+                <strong className="text-white">Sem compromisso</strong> na avaliação inicial
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

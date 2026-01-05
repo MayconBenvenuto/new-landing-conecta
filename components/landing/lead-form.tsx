@@ -187,7 +187,7 @@ export function LeadForm() {
 
   if (isSuccess) {
     return (
-      <section id="diagnostico" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+      <section id="diagnostico" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
         <div className="container mx-auto max-w-7xl">
           <div className="max-w-3xl mx-auto">
             {/* Success header */}
@@ -235,7 +235,7 @@ export function LeadForm() {
   }
 
   return (
-    <section id="diagnostico" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="diagnostico" className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content & Image */}

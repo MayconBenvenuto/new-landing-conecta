@@ -64,11 +64,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo-conecta-saude.png"
+              src={isScrolled ? "/images/logo-conecta-saude.png" : "/images/logo-conecta-saude-branca.png"}
               alt="Conecta Saúde"
               width={140}
               height={36}
-              className="h-8 w-auto md:h-[133px]"
+              className="h-8 w-auto md:h-[133px] transition-opacity duration-300"
               priority
             />
           </Link>
@@ -81,16 +81,18 @@ export function Navbar() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors relative ${
-                  activeSection === link.id ? "text-primary" : "text-foreground hover:text-primary"
+                  activeSection === link.id ? "text-white" : isScrolled ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.label}
                 {activeSection === link.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                  <span className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${
+                    isScrolled ? "bg-primary" : "bg-white"
+                  }`} />
                 )}
               </a>
             ))}
-            <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
+            <Button asChild size="sm" className={isScrolled ? "bg-primary hover:bg-primary/90" : "bg-white text-primary hover:bg-white/90"}>
               <a href="#diagnostico" onClick={handleCTAClick}>
                 Agendar Diagnóstico
               </a>
@@ -100,7 +102,9 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className={`md:hidden p-2 transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

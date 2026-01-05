@@ -12,7 +12,7 @@ export function EvidenceROI() {
   const [ref, isVisible] = useScrollReveal()
 
   return (
-    <section id="prova" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="prova" ref={ref} className="py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
@@ -35,7 +35,7 @@ export function EvidenceROI() {
                 gestão tradicional, antecipando riscos antes que se tornem afastamentos, ações judiciais ou perdas
                 operacionais.
               </p>
-              <p className="font-medium text-secondary">
+              <p className="font-bold text-secondary">
                 Não entregamos apenas relatórios. Entregamos base técnica para decisões estratégicas, com impacto direto
                 no ROI do capital humano.
               </p>
@@ -84,7 +84,7 @@ function DashboardMock({ isVisible }: { isVisible: boolean }) {
           transition={{ duration: 0.5 }}
           className="flex items-center justify-between"
         >
-          <h3 className="text-lg font-bold text-secondary">Dashboard de Riscos</h3>
+          <h3 className="text-lg font-bold text-primary">Dashboard de Riscos</h3>
         </motion.div>
 
         {/* KPI Cards */}
@@ -99,16 +99,14 @@ function DashboardMock({ isVisible }: { isVisible: boolean }) {
             >
               <div className="flex items-center gap-2 mb-2">
                 <kpi.Icon
-                  className={`w-4 h-4 ${kpi.color === "green" ? "text-green-600" : kpi.color === "blue" ? "text-blue-600" : "text-primary"}`}
+                  className="w-4 h-4 text-primary"
                 />
                 <span className="text-xs text-muted-foreground">{kpi.label}</span>
               </div>
               <div className="text-2xl font-bold text-secondary">
                 <AnimatedCounter end={kpi.value} prefix={kpi.prefix} suffix={kpi.suffix} />
               </div>
-              <div
-                className={`text-xs ${kpi.color === "green" ? "text-green-600" : kpi.color === "blue" ? "text-blue-600" : "text-primary"}`}
-              >
+              <div className="text-xs text-primary">
                 {kpi.color === "blue" ? "acima da meta" : index === 2 ? "NR-1 atendida" : index === 0 ? "vs. trimestre anterior" : "redução anual"}
               </div>
             </motion.div>
