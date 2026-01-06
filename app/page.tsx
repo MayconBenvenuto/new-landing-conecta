@@ -28,9 +28,7 @@ export default async function HomePage({
         <HeroHub version={version} />
         <ClientLogos />
         <PainSection />
-        <Hub360 />
         <HowItWorks />
-        <EvidenceROI />
         <Testimonials />
         <NR1Section />
         <AboutSection />

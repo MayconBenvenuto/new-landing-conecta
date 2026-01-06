@@ -9,26 +9,26 @@ const STEPS = [
   {
     icon: ClipboardCheck,
     step: "01",
-    title: "Levantamento técnico",
-    description: "Coleta estruturada de dados sobre a operação, indicadores de saúde e histórico de riscos.",
+    title: "Mapeamento de Ecossistema",
+    description: "Coleta de dados das áreas já existentes (SST, RH ou Jurídico) para identificar lacunas de integração e riscos ocultos.",
   },
   {
     icon: Search,
     step: "02",
-    title: "Análise de riscos psicossociais",
-    description: "Identificação e classificação de fatores que podem impactar a saúde mental e a produtividade.",
+    title: "Auditoria de Riscos e Oportunidades",
+    description: "Análise técnica dos fatores psicossociais e jurídicos, validando o que já existe e identificando onde a empresa ainda está exposta.",
   },
   {
     icon: GitBranch,
     step: "03",
-    title: "Cruzamento de dados",
-    description: "Correlação entre absenteísmo, sinistralidade, turnover e indicadores de clima organizacional.",
+    title: "Inteligência de Dados Belz",
+    description: "Cruzamento de indicadores de saúde, custos de sinistralidade e passivos trabalhistas para gerar uma visão 360º do negócio.",
   },
   {
     icon: FileCheck,
     step: "04",
-    title: "Recomendações estratégicas",
-    description: "Plano de ação personalizado com priorização baseada em impacto e viabilidade de implementação.",
+    title: "Plano de Intervenção Estratégica",
+    description: "Entrega de soluções personalizadas, desde a implementação de políticas específicas até a gestão completa do HUB de saúde.",
   },
 ]
 
@@ -46,7 +46,7 @@ export function HowItWorks() {
         >
           <span className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-4 block">Metodologia</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance text-white">
-            Como funciona o diagnóstico
+            Metodologia Ágil: Diagnóstico e Integração de Dados
           </h2>
           <p className="text-lg text-white/80 leading-relaxed">
             Um processo estruturado para identificar, analisar e priorizar riscos com base em evidências e dados reais

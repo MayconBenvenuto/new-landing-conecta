@@ -5,9 +5,11 @@ import { AuthorityBadges } from "./authority-badges"
 
 export function NR1Section() {
   const actions = [
-    "atendendo às exigências da NR-1",
-    "fortalecendo a cultura de prevenção",
-    "protegendo a operação antes da fiscalização",
+    "Inventário de Riscos Psicossociais: Mapeamento técnico e profundo dos fatores estressores de cada unidade.",
+    "Medidas de Controle Efetivas: Planos de ação práticos que vão além da teoria e reduzem o adoecimento.",
+    "Execução do Plano de Ação: Suporte direto na implementação das medidas recomendadas, garantindo que as mudanças aconteçam na prática operacional.",
+    "Segurança Jurídica: Documentação robusta para defesa em fiscalizações e perícias trabalhistas.",
+    "Monitoramento Contínuo: Relatórios inteligentes que garantem que a NR-01 seja uma gestão viva, não apenas um arquivo.",
   ]
 
   return (
@@ -21,24 +23,25 @@ export function NR1Section() {
           {/* Left - Content */}
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance text-secondary">
-              NR-1 – Riscos Psicossociais: O futuro da gestão é humano e imediato.
+              NR-01 & Riscos Psicossociais: A Base da Gestão Moderna
             </h2>
             <p className="text-xl font-semibold text-primary">
-              NR-1 e riscos psicossociais: o novo padrão da gestão responsável.
+              Onde o cumprimento legal encontra a estratégia de preservação humana.
             </p>
             <div className="space-y-4 text-foreground/90 leading-relaxed">
               <p>
-                O cenário corporativo mudou. A gestão de riscos psicossociais deixou de ser tendência para se tornar
-                exigência regulatória e estratégica.
+                O cenário corporativo mudou. A gestão de riscos psicossociais dentro da NR-01 deixou de ser apenas uma
+                tendência para se tornar uma exigência regulatória e estratégica. Mais do que um documento, é o novo
+                padrão de gestão responsável que protege a empresa e o colaborador simultaneamente.
               </p>
               <p>
-                Empresas que lideram o mercado compreendem que a sustentabilidade do negócio depende da integridade das
-                pessoas que o constroem.
+                Empresas que lideram o mercado compreendem que o PGR (Programa de Gerenciamento de Riscos) só é efetivo
+                quando integra a integridade das pessoas à sustentabilidade do negócio.
               </p>
             </div>
 
             <div className="space-y-3 pt-4">
-              <h3 className="font-bold text-lg text-secondary">Atuação preventiva e sistêmica:</h3>
+              <h3 className="font-bold text-lg text-secondary">Atuação Preventiva e Sistêmica (O que entregamos na NR-01):</h3>
               <ul className="space-y-3">
                 {actions.map((action, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -51,10 +54,6 @@ export function NR1Section() {
               </ul>
             </div>
 
-            <p className="text-foreground/90 leading-relaxed pt-4 font-medium text-lg">
-              Não entregamos apenas PGR e GRO. Entregamos governança, previsibilidade e trabalho decente, alinhados à
-              alta performance sustentável.
-            </p>
           </div>
 
           {/* Right - Image */}

@@ -99,7 +99,9 @@ export function HeroHub({ version = "default" }: { version?: string }) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug text-balance text-white"
             >
-              {landingContent.headline}
+              Sua empresa não é fragmentada.
+              <br />
+              A gestão de riscos também não deveria ser.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -108,8 +110,8 @@ export function HeroHub({ version = "default" }: { version?: string }) {
               className="text-lg md:text-xl leading-relaxed text-white/90"
             >
               Um HUB de Gestão de Riscos estruturado para integrar Recursos Humanos, Jurídico e Saúde e Segurança do
-              Trabalho em uma única inteligência de dados, orientado para conformidade com a NR-1 e capaz de preservar a
-              integridade das pessoas.
+              Trabalho em uma única inteligência de dados, orientado para a Segurança Jurídica da NR-1 e o cuidado real
+              com as pessoas e capaz de preservar a integridade das pessoas.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -120,33 +122,6 @@ export function HeroHub({ version = "default" }: { version?: string }) {
               Decisões baseadas em evidências, estruturadas para prevenir riscos psicossociais, reduzir passivos e
               sustentar a performance do negócio.
             </motion.p>
-
-            {/* Impact Metrics */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="grid grid-cols-3 gap-4 py-6"
-            >
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-2xl md:text-3xl font-bold text-white mb-1">
-                  <AnimatedCounter end={40} suffix="%" />
-                </div>
-                <p className="text-xs text-white/70">Redução de afastamentos</p>
-              </div>
-              <div className="text-center border-x border-white/20">
-                <div className="flex items-center justify-center gap-1 text-2xl md:text-3xl font-bold text-white mb-1">
-                  <AnimatedCounter end={98} suffix="%" />
-                </div>
-                <p className="text-xs text-white/70">Conformidade NR-1</p>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-2xl md:text-3xl font-bold text-white mb-1">
-                  <AnimatedCounter end={7} suffix=" dias" />
-                </div>
-                <p className="text-xs text-white/70">Diagnóstico completo</p>
-              </div>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
