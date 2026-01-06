@@ -283,7 +283,7 @@ export function LeadForm() {
                     </p>
                     <p className="text-sm text-red-600 mt-1">
                       {retryCount >= 3
-                        ? "Entre em contato pelo WhatsApp: (11) 99999-9999"
+                        ? "Entre em contato pelo WhatsApp: (81) 99608-5185"
                         : "Verifique sua conexão e tente novamente."}
                     </p>
                   </div>

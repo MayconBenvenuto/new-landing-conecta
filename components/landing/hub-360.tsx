@@ -82,60 +82,8 @@ export function Hub360() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="flex justify-center mt-16"
         >
-          <CircularInfographic />
         </motion.div>
       </div>
     </section>
-  )
-}
-
-function CircularInfographic() {
-  const nodes = ["RH", "Jurídico", "Compliance", "SST", "Gestão", "Saúde"]
-  const radius = 140
-  const centerX = 200
-  const centerY = 200
-
-  return (
-    <div className="relative w-full max-w-md aspect-square">
-      <svg viewBox="0 0 400 400" className="w-full h-full">
-        <defs>
-          <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgb(2, 29, 121)" />
-            <stop offset="100%" stopColor="rgb(1, 17, 71)" />
-          </linearGradient>
-        </defs>
-
-        {/* Center Logo */}
-        <circle cx={centerX} cy={centerY} r="50" fill="url(#circleGradient)" />
-        <text x={centerX} y={centerY + 8} textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">
-          CS
-        </text>
-
-        {/* Orbiting Nodes */}
-        {nodes.map((node, index) => {
-          const angle = (index * 60 - 90) * (Math.PI / 180)
-          const x = centerX + radius * Math.cos(angle)
-          const y = centerY + radius * Math.sin(angle)
-
-          return (
-            <g key={index}>
-              <line
-                x1={centerX}
-                y1={centerY}
-                x2={x}
-                y2={y}
-                stroke="rgb(255, 255, 255)"
-                strokeWidth="2"
-                strokeOpacity="0.3"
-              />
-              <circle cx={x} cy={y} r="35" fill="white" stroke="rgb(2, 29, 121)" strokeWidth="2" />
-              <text x={x} y={y + 5} textAnchor="middle" fill="rgb(1, 17, 71)" fontSize="14" fontWeight="600">
-                {node}
-              </text>
-            </g>
-          )
-        })}
-      </svg>
-    </div>
   )
 }

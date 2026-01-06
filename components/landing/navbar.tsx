@@ -61,14 +61,14 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-center md:justify-between h-16 md:h-20 relative">
           <Link href="/" className="flex items-center">
             <Image
               src={isScrolled ? "/images/logo-conecta-saude.png" : "/images/logo-conecta-saude-branca.png"}
               alt="Conecta Saúde"
               width={140}
               height={36}
-              className="h-8 w-auto md:h-[133px] transition-opacity duration-300"
+              className="h-28 w-auto md:h-[133px] transition-opacity duration-300"
               priority
             />
           </Link>
@@ -102,7 +102,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 transition-colors ${
+            className={`md:hidden p-2 transition-colors absolute right-0 ${
               isScrolled ? "text-foreground" : "text-white"
             }`}
             aria-label="Toggle menu"

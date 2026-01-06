@@ -16,7 +16,7 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { href: "https://linkedin.com/company/conectasaude", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://www.linkedin.com/company/conecta-sa%C3%BAdee/posts/?feedView=all", icon: Linkedin, label: "LinkedIn" },
     { href: "https://instagram.com/conectasaude", icon: Instagram, label: "Instagram" },
   ]
 
@@ -32,7 +32,7 @@ export function Footer() {
                 alt="Conecta Saúde"
                 width={160}
                 height={42}
-                className="w-auto brightness-0 invert h-[125px]"
+                className="w-auto brightness-0 invert h-32 md:h-[125px]"
               />
             </Link>
             <p className="text-white/80 text-sm leading-relaxed">
@@ -87,7 +87,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 text-xs text-white/60">
                 <FileText className="w-3 h-3" />
-                <span>CNPJ: 00.000.000/0001-00</span>
+                <span>CNPJ: 58.139.448/0001-70</span>
               </div>
             </div>
           </div>
@@ -97,11 +97,11 @@ export function Footer() {
             <h3 className="font-bold mb-4">Contato</h3>
             <div className="space-y-3 text-sm">
               <a
-                href="tel:+5581999999999"
+                href="tel:+5581996085185"
                 className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>(81) 99999-9999</span>
+                <span>(81) 99608-5185</span>
               </a>
               <a
                 href="mailto:contato@conectasaude.com.br"
@@ -113,9 +113,7 @@ export function Footer() {
               <div className="flex items-start gap-2 text-white/80">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
                 <span>
-                  Av. Exemplo, 123 - Sala 456
-                  <br />
-                  Recife, PE - CEP 50000-000
+                  Empresarial Charles Darwin, 231 - Ilha do Leite, Recife - PE, 50070-460
                 </span>
               </div>
             </div>

@@ -8,10 +8,10 @@ export function ClientLogos() {
   const [ref, isVisible] = useScrollReveal()
 
   const clients = [
-    { name: "ABRHPE", logo: "/images/abrhpe.webp" },
+    { name: "Agemar", logo: "/images/logo-agemar.jpg" },
     { name: "Cesar", logo: "/images/cesar.webp" },
-    { name: "Focus", logo: "/images/focus.webp" },
-    { name: "Instituto", logo: "/images/instituto.webp" },
+    { name: "Maxday", logo: "/images/logo-maxday.png" },
+    { name: "Pichilau", logo: "/images/pichilau.png" },
     { name: "Porto Digital", logo: "/images/portodigital.webp" },
     { name: "Ultramega", logo: "/images/ultramega.webp" },
   ]

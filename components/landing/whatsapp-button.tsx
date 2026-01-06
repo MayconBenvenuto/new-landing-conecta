@@ -26,7 +26,7 @@ export function WhatsAppButton() {
     return () => clearTimeout(timer)
   }, [])
 
-  const whatsappNumber = "5581999999999" // Substitua pelo número real
+  const whatsappNumber = "5581996085185"
   const message = "Olá! Gostaria de falar com um especialista sobre gestão de riscos."
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
