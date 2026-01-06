@@ -20,7 +20,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # env files (NUNCA commitar credenciais)
-.env*.local
+.env.local
 .env.development
 .env.test
 .env.production
