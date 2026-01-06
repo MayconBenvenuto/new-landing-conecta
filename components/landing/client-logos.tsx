@@ -7,14 +7,13 @@ import { useScrollReveal } from "@/hooks/use-animations"
 export function ClientLogos() {
   const [ref, isVisible] = useScrollReveal()
 
-  // Logos de clientes - substitua com logos reais quando disponíveis
   const clients = [
-    { name: "Cliente 1", logo: "/images/clients/client-1.svg" },
-    { name: "Cliente 2", logo: "/images/clients/client-2.svg" },
-    { name: "Cliente 3", logo: "/images/clients/client-3.svg" },
-    { name: "Cliente 4", logo: "/images/clients/client-4.svg" },
-    { name: "Cliente 5", logo: "/images/clients/client-5.svg" },
-    { name: "Cliente 6", logo: "/images/clients/client-6.svg" },
+    { name: "ABRHPE", logo: "/images/abrhpe.webp" },
+    { name: "Cesar", logo: "/images/cesar.webp" },
+    { name: "Focus", logo: "/images/focus.webp" },
+    { name: "Instituto", logo: "/images/instituto.webp" },
+    { name: "Porto Digital", logo: "/images/portodigital.webp" },
+    { name: "Ultramega", logo: "/images/ultramega.webp" },
   ]
 
   return (
@@ -27,7 +26,7 @@ export function ClientLogos() {
           className="text-center mb-12"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-3">
-            Empresas que já confiam no Conecta Saúde
+            Empresas que já confiam no Grupo Belz
           </h2>
           <p className="text-foreground/70">
             Mais de <span className="font-bold text-primary">150 empresas</span> transformaram sua gestão de riscos
@@ -44,38 +43,17 @@ export function ClientLogos() {
               className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
             >
               <div className="relative w-full h-20 flex items-center justify-center">
-                {/* Placeholder for client logo */}
-                <div className="w-32 h-16 bg-secondary/10 rounded-lg flex items-center justify-center border border-border/30">
-                  <span className="text-xs font-semibold text-secondary/60">Logo {index + 1}</span>
-                </div>
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={128}
+                  height={64}
+                  className="object-contain max-h-16"
+                />
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 text-center"
-        >
-          <div className="inline-flex items-center gap-8 text-sm text-foreground/70">
-            <div>
-              <span className="block text-2xl font-bold text-primary">98%</span>
-              <span>Taxa de satisfação</span>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div>
-              <span className="block text-2xl font-bold text-primary">87%</span>
-              <span>Renovam o contrato</span>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div>
-              <span className="block text-2xl font-bold text-primary">2h</span>
-              <span>Tempo médio de resposta</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

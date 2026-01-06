@@ -74,7 +74,6 @@ export function NR1Section() {
             headline="Sua empresa está preparada para a NR-1?"
             description="Realize um diagnóstico prévio gratuito e identifique gaps de conformidade antes que se tornem problemas."
             buttonText="Agendar Diagnóstico NR-1"
-            urgency="Apenas 5 diagnósticos gratuitos por mês"
             location="nr1-section"
           />
         </div>
